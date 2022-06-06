@@ -1,0 +1,120 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<!-- Header-->
+<header class="py-5" style="margin-top:-10px;" onload="displayBusyIndicator()">
+    <div class="container px-sm-5">
+        <div class="p-4 p-lg-2 bg-transparent rounded-3 text-center">
+            <div class="m-4 m-lg-2">
+                <h1>Bienvenidos </h1>
+                <p class="fs-3" style="font-family: 'Open Sans', Arial, sans-serif; text-shadow: 0 0 1px #fff, 0 1px 2px rgba(0,0,0,0.3);">
+                    <span>Ponemos</span> <span>a</span> <span>su</span> <span>disposición</span> <span>una</span> <span>amplia</span> <span>variedad</span> <span>de</span> <span>instalaciones</span> <span>y</span> <span>cursos</span> <span>para</span> <span>su</span> <span>entretenimiento</span>
+                    <span>y</span> <span>desarrollo</span> <span>físico</span> <span>y</span> <span>mental</span> <span>.</span> <span>Acompañenos</span> <span>disfrute</span> <span>esta</span> <span>experiencia</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Page Content-->
+<section class="pt-0" style="margin-top:-65px;">
+    <div class="container px-sm-1">
+        <ul class="ch-grid">
+            <li>
+                <div class="ch-item ch-img-1">
+                    <div class="ch-info-wrap">
+                        <div class="ch-info">
+                            <div class="ch-info-front ch-img-1"></div>
+                            <a asp-area="" asp-route-id="1" asp-controller="FE_Instalaciones" asp-action="Index">
+                                <div class="ch-info-back">
+                                    <h2>Natación</h2>
+                                    @*<p>Cursos y Horarios <a asp-area="" asp-route-id="1" asp-controller="FE_Instalaciones" asp-action="Index">instalaciones</a></p>*@
+                                    <a asp-area="" asp-route-id="1" asp-controller="FE_Instalaciones" asp-action="Index"><p>Cursos y Horarios</p>instalaciones</a>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="ch-item ch-img-2">
+                    <div class="ch-info-wrap">
+                        <div class="ch-info">
+                            <div class="ch-info-front ch-img-2"></div>
+                            <div class="ch-info-back">
+                                <h2>Canchas de Fútbol</h2>
+                                <p>Cursos y Horarios <a asp-area="" asp-route-id="2" asp-controller="FE_Instalaciones" asp-action="Index">instalaciones</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="ch-item ch-img-3">
+                    <div class="ch-info-wrap">
+                        <div class="ch-info">
+                            <div class="ch-info-front ch-img-3"></div>
+                            <a asp-area="" asp-route-id="3" asp-controller="FE_Instalaciones" asp-action="Index">
+                                <div class="ch-info-back">
+                                    <h2>Gimnasios</h2>
+                                    <p>Horarios <a href="#">instalaciones</a></p>
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <ul class="ch-grid">
+            <li>
+                <div class="ch-item ch-img-4">
+                    <div class="ch-info-wrap">
+                        <div class="ch-info">
+                            <div class="ch-info-front ch-img-4"></div>
+                            <a asp-area="" asp-route-id="4" asp-controller="FE_Instalaciones" asp-action="Index">
+                                <div class="ch-info-back">
+                                    <h2>Pista Atlética</h2>
+                                    <p>Horarios <a href="#">instalaciones</a></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="ch-item ch-img-5">
+                    <div class="ch-info-wrap">
+                        <div class="ch-info">
+                            <div class="ch-info-front ch-img-5"></div>
+                            <a asp-area="" asp-route-id="5" asp-controller="FE_Instalaciones" asp-action="Index">
+                                <div class="ch-info-back">
+                                    <h2>Actividades Variadas</h2>
+                                    <p>Lugar y Horarios<a href="#">instalaciones</a></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        $(window).on('beforeunload', function () {
+            displayBusyIndicator();
+        });
+
+        $(document).ready(function () {
+            hideBusyIndicator();
+        });
+
+        $(document).on('submit', 'form', function () {
+            displayBusyIndicator();
+        });
+
+    </script>
+
+}

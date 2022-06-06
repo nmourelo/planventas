@@ -1,0 +1,49 @@
+﻿@model planventas.Data.Pos_Tipo_Instalacion
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_fondo.cshtml";
+
+}
+
+<div id="uno" class="container">
+    <div id="primaryrow" class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default" style="background-color: ghostwhite; border: solid; border-width: 1px; border-color: slategrey ThreeDDarkShadow; padding: 10px 10px 10px 10px">
+                <div class="panel-body">
+                    <div class="col-12 mx-auto pt-0">
+                        <div class="card">
+                            <div class="card-header text-uppercase text-white" style="background-color:steelblue;">
+                                <h5>Editar Tipo de Instalación</h5>
+                            </div>
+                            <div class="card-body">
+                                <form asp-action="Edit">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <input type="hidden" asp-for="Cod_TipoInstalacion" />
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label asp-for="Des_TipoInstalacion" class="control-label"></label>
+                                            <input asp-for="Des_TipoInstalacion" class="form-control" />
+                                            <span asp-validation-for="Des_TipoInstalacion" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="submit" title="Salvar las modificaciones realizadas..." value="Salvar" class="btn btn-primary" />
+                                            <a class="btn btn-success" title="Regresar a la pantalla anterior..." asp-action="Index">Regresar</a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+

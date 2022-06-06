@@ -1,0 +1,77 @@
+﻿@model IEnumerable<planventas.Data.Pos_Instalacion>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div id="uno" class="container">
+    <br />
+    <p>
+        <a class="btn btn-primary" asp-action="Create">Nueva Instalación</a>
+    </p>
+    <div id="primaryrow" class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default" style="background-color: ghostwhite; border: solid; border-width: 1px; border-color: slategrey ThreeDDarkShadow; ">
+                <div class="panel-heading" style="background-color: steelblue; border: thin; color: white;">
+                    <h3 class="panel-title">&nbsp; Administración de Instalaciones</h3>
+                </div>
+                <div class="panel-body">
+                    <table id="Param5_Table" class="table" style="padding: 10px 10px 10px 10px;">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Des_Instalacion)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Des_Direccion)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Num_Telefono)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Pos_Tipo_Instalacion)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Des_Instalacion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Des_Direccion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Num_Telefono)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Pos_Tipo_Instalacion.Des_TipoInstalacion)
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-warning btn-sm" title="Editar datos del registro seleccionado..." asp-action="Edit" asp-route-id="@item.Cod_Instalacion"> <i class="fa-solid fa-pen-to-square"></i></a>
+                                        <button title="Borrar el registro seleccionado..." data-id="@item.Cod_Instalacion" class="btn btn-danger btn-sm deleteItem" data-toggle="modal" data-target="#deleteDialog"><i class="fa-solid fa-trash-can"></i></button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<partial name="_DeleteDialog" />
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="/js/DeleteDialog.js"></script>
+    <script type="text/javascript">
+
+        // borrar registro
+        sc_deleteDialog.openModal('deleteItem', true, 'btnYesDelete', '/Pos_Instalaciones/Delete/', false);
+    </script>
+
+}

@@ -1,0 +1,31 @@
+﻿@model planventas.Data.Pos_Entrenador
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label asp-for="Cod_Instalacion" class="control-label"></label>
+            <select asp-for="Cod_Instalacion" class="form-control" asp-items="ViewBag.Cod_Instalacion"></select>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label asp-for="Nom_Entrenador" class="control-label"></label>
+            <input asp-for="Nom_Entrenador" class="form-control" />
+            <span asp-validation-for="Nom_Entrenador" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label asp-for="Des_Perfil" class="control-label"></label>
+            <input asp-for="Des_Perfil" class="form-control" />
+            <span asp-validation-for="Des_Perfil" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label asp-for="Dir_Imagen" class="control-label"></label>
+            <input asp-for="Dir_Imagen" class="form-control" />
+            <span asp-validation-for="Dir_Imagen" class="text-danger"></span>
+        </div>
+    </div>
+</div>

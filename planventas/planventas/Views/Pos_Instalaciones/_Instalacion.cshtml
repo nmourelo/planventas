@@ -1,0 +1,39 @@
+﻿@model planventas.Data.Pos_Instalacion
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label asp-for="Cod_TipoInstalacion" class="control-label"></label>
+            <select asp-for="Cod_TipoInstalacion" class="form-control" asp-items="ViewBag.Cod_TipoInstalacion"></select>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label asp-for="Des_Instalacion" class="control-label"></label>
+            <input asp-for="Des_Instalacion" class="form-control" />
+            <span asp-validation-for="Des_Instalacion" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label asp-for="Des_Direccion" class="control-label"></label>
+            <input asp-for="Des_Direccion" class="form-control" />
+            <span asp-validation-for="Des_Direccion" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label asp-for="Num_Telefono" class="control-label"></label>
+            <input asp-for="Num_Telefono" class="form-control" />
+            <span asp-validation-for="Num_Telefono" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label asp-for="Dir_Imagenes" class="control-label"></label>
+            <input asp-for="Dir_Imagenes" class="form-control" />
+            <span asp-validation-for="Dir_Imagenes" class="text-danger"></span>
+        </div>
+    </div>
+</div>

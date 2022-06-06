@@ -1,0 +1,94 @@
+﻿@model IEnumerable<planventas.Data.Pos_Instalacion>
+
+@{
+    ViewData["Title"] = "Index";
+    //Layout = "~/Views/Shared/_fondo.cshtml";
+}
+
+@*<h1>Index</h1>
+
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Des_Instalacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Des_Direccion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Num_Telefono)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dir_Imagenes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pos_Tipo_Instalacion.Des_TipoInstalacion)
+                </td>
+
+            </tr>
+    }
+        </tbody>
+    </table>*@
+
+<div id="uno" class="container-fluid" style="margin-top:100px;">
+
+    <div class="row">
+        <div class="col-10">
+            <div class="thead-light" style="text-align: center; margin-bottom: 40px; font-family: 'Open Sans', Arial, sans-serif; text-shadow: 0 0 1px #fff, 0 1px 2px rgba(0,0,0,0.3);">
+                <p><h1 style="text-align: center; margin-bottom: 40px; font-family: 'Open Sans', Arial, sans-serif; text-shadow: 0 0 1px #fff, 0 1px 2px rgba(0,0,0,0.3);">@ViewData["TipoInsta"]</h1></p>
+            </div>
+        </div>
+        <div class="col-2" style="align-items:center">
+            <a href="javascript:history.back()"> <img src="~/img/back2.png" height="70" width="70" alt="regresar" />Regresar</a>
+        </div>
+    </div>
+
+    <div class="piscina">
+
+        @foreach (var item in Model)
+        {
+
+            string number;
+            number = "~/img/" + item.Dir_Imagenes;
+            string alt1;
+            alt1 = "Image" + @item.Cod_Instalacion.ToString();
+
+
+            <div class="thumbex">
+                <div class="title">
+                    <div class="thumbnail"><a asp-area="" asp-route-id="@item.Cod_Instalacion" asp-controller="FE_Instalaciones" asp-action="Productos"> <img src="@Url.Content(number)" alt=@alt1 /><span>@Html.DisplayFor(modelItem => item.Des_Instalacion)</span></a></div>
+                </div>
+                <figcaption>
+                    <p>@Html.DisplayFor(modelItem => item.Des_Direccion)</p>
+                </figcaption>
+            </div>
+        }
+    </div>
+
+
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        $(window).on('beforeunload', function () {
+            displayBusyIndicator();
+        });
+
+        $(document).ready(function () {
+            hideBusyIndicator();
+        });
+
+        $(document).on('submit', 'form', function () {
+            displayBusyIndicator();
+        });
+
+    </script>
+
+}
+
+

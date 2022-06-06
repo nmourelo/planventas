@@ -1,0 +1,192 @@
+﻿<div id="contenedorTopnav" class="container-fluid">
+    <div class="topnav">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item px-2">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">
+                            <i class="fa fa-tachometer" aria-hidden="true"></i>
+                            DashBoard
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" asp-area="" asp-controller="" asp-action="" data-toggle="dropdown">
+                            <i class="fa-brands fa-stack-overflow"></i>
+                            Administrativos
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-submenu">
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <a id="dropdownMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">
+                                        <i class="fa-brands fa-stack-overflow"></i>
+                                        Solicitudes
+                                    </a>
+                                }
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <ul aria-labelledby="dropdownMenu2" class="dropdown-menu border-0 shadow">
+                                        <li class="nav-item active">
+                                            <a class="dropdown-item" asp-area="" asp-controller="RhAEncaSolAsistencias" asp-action="Index">
+                                                <i class="fa-brands fa-stack-overflow"></i>
+                                                Justificación de Inasistencia
+                                            </a>
+                                        </li>
+                                        <li class="nav-item active">
+                                            <a class="dropdown-item" asp-area="" asp-controller="" asp-action="">
+                                                <i class="fa-brands fa-stack-overflow"></i>
+                                                Disfrute de Vacaciones
+                                            </a>
+                                        </li>
+                                        <li class="nav-item active">
+                                            <a class="dropdown-item" asp-area="" asp-controller="" asp-action="">
+                                                <i class="fa-brands fa-stack-overflow"></i>
+                                                Vales de Caja Chica
+                                            </a>
+                                        </li>
+                                    </ul>
+                                }
+                            </li>
+                            @if (User.Identity.IsAuthenticated && (User.IsInRole("Jefatura") || User.IsInRole("Admin")))
+                            {
+                                <li class="nav-item active">
+                                    <a class="dropdown-item" asp-area="" asp-controller="SolJustificaCoor" asp-action="Index">
+                                        <i class="fa-brands fa-stack-overflow"></i>
+                                        Coordinación
+                                    </a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="dropdown-item" asp-area="" asp-controller="SolJustificaCoor" asp-action="Imprimir" asp-route-id="9">
+                                        <i class="fa-brands fa-stack-overflow"></i>
+                                        Vista
+                                    </a>
+                                </li>
+                            }
+                            @if (User.Identity.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("AdmonRH")))
+                            {
+                                <li class="dropdown-submenu">
+                                    <a id="dropdownMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">
+                                        <i class="fa-brands fa-stack-overflow"></i>
+                                        RR HH.
+                                    </a>
+                                    <ul aria-labelledby="dropdownMenu2" class="dropdown-menu border-0 shadow">
+                                        <li class="dropdown-submenu">
+                                            <a id="dropdownMenu3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">
+                                                Aprobar Solic.
+                                            </a>
+                                            <ul aria-labelledby="dropdownMenu3" class="dropdown-menu border-0 shadow">
+                                                <li class="nav-item active">
+                                                    <a class="dropdown-item" asp-area="" asp-controller="SolJustificaRH" asp-action="Index">
+                                                        <i class="fa-brands fa-stack-overflow"></i>
+                                                        Justificación de Inasistencia
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item active">
+                                                    <a class="dropdown-item" asp-area="" asp-controller="" asp-action="">
+                                                        <i class="fa-brands fa-stack-overflow"></i>
+                                                        Disfrute de Vacaciones
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" asp-area="" asp-controller="" asp-action="" data-toggle="dropdown">
+                            <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                            Expediente Unico
+                        </a>
+                        <ul aria-labelledby="dropdownMenu2" class="dropdown-menu border-0 shadow">
+                            @if (User.Identity.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("AdmonExp")))
+                            {
+                                <li class="nav-item active">
+                                    <a class="dropdown-item" asp-area="" asp-controller="Upload_ActosInicio" asp-action="Index">
+                                        <i class="fa fa-upload" aria-hidden="true"></i>
+                                        Carga de Expedientes
+                                    </a>
+                                </li>
+                            }
+                            @if (User.Identity.IsAuthenticated && (User.IsInRole("Jefatura") || User.IsInRole("Admin") || User.IsInRole("AdmonExp") || User.IsInRole("UserExp")))
+                            {
+                                <li class="nav-item active">
+                                    <a class="dropdown-item" asp-area="" asp-controller="Exp_ActosInicio" asp-action="Index">
+                                        <i class="fa fa-search" aria-hidden="true"></i>
+                                        Consulta Expediente
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                    @if (User.Identity.IsAuthenticated )
+                    {
+                        <li class="nav-item px-4 dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog" aria-hidden="true"></i>  Configuración</a>
+                            <div id="megamenu1" class="dropdown-menu dropdown-menu-left" aria-labelledby="servicesDropdown">
+                                <div id="megamenu2" class="d-md-flex align-items-start justify-content-lg-end">
+                                    <div>
+                                        @if (User.Identity.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("AdmonRH")))
+                                        {
+                                            <div class="dropdown-header">Recursos Humanos</div>
+                                            <a class="dropdown-item" asp-area="" asp-controller="RhAsistenciaTiposJustificaciones" asp-action="Index">
+                                                Tipos Justificación
+                                            </a>
+                                            <a class="dropdown-item" asp-area="" asp-controller="RhPuestos" asp-action="Index">
+                                                Registro de Puestos
+                                            </a>
+                                            <a class="dropdown-item" asp-area="" asp-controller="RhCentrosTrabajo" asp-action="Index">
+                                                Registro de Centros de Trabajo
+                                            </a>
+                                            <a class="dropdown-item" asp-area="" asp-controller="RhDepartamentos" asp-action="Index">
+                                                Registro de Departamentos
+                                            </a>
+                                        }
+                                    </div>
+                                    <div>
+                                        @if (User.Identity.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("Jefatura")))
+                                        {
+                                            <div class="dropdown-header">Punto de Ventas</div>
+                                            <a class="dropdown-item" asp-area="" asp-controller="RhCentrosTrabajo" asp-action="Index">
+                                                Registro de Terminales
+                                            </a>
+                                            <a class="dropdown-item" asp-area="" asp-controller="Pos_Tipos_Instalacion" asp-action="Index">
+                                                Registro de Tipos de Instalaciones
+                                            </a>
+                                            <a class="dropdown-item" asp-area="" asp-controller="Pos_Instalaciones" asp-action="Index">
+                                                Registro de Instalaciones
+                                            </a>
+                                            <a class="dropdown-item" asp-area="" asp-controller="Pos_Entrenadores" asp-action="Index">
+                                                Registro de Entrenadores
+                                            </a>
+                                            <a class="dropdown-item" asp-area="" asp-controller="Pos_Servicios" asp-action="Index">
+                                                Registro de Servicios
+                                            </a>
+                                        }
+                                    </div>
+                                    <div>
+                                        @if (User.Identity.IsAuthenticated && (User.IsInRole("Admin")))
+                                        {
+                                            <div class="dropdown-header">General</div>
+                                            <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Index">
+                                                Programas
+                                            </a>
+                                            <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Index">
+                                                Planes
+                                            </a>
+                                            <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Index">
+                                                Organizaciones
+                                            </a>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>

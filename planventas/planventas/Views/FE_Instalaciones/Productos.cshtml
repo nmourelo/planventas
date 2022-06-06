@@ -1,0 +1,151 @@
+﻿@using System.Globalization;
+@model IEnumerable<planventas.Data.Pos_Servicio> 
+
+
+<div class="container-fluid" style="margin-top:75px;">
+    <div class="row col-12" style="font-family: 'Open Sans', Arial, sans-serif; text-shadow: 0 0 1px #fff, 0 1px 2px rgba(0,0,0,0.3);">
+        <div class="col-2" style="margin-left: 10px;">
+            <br />
+            <br />
+            <h3>Filtrar y  buscar por:</h3>
+
+        </div>
+        <div class="col-9" style="display:inline-flex">
+            <div class="col-9" >
+                <h2>@ViewData["Insta"]</h2>
+                <h3>Cursos y Horarios</h3>
+            </div>
+            <div class="col-3" style="align-items:center;">
+                <a href="javascript:history.back()"> <img src="~/img/back2.png" height="70" width="70" alt="regresar" />Regresar</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="row col-12">
+        <div class="col-2" style="margin-left: 10px;"> <!--Inicio Sidebar de filtro-->
+            <div class="sidebar-block px-5 px-lg-0 me-lg-4" style="margin-left:10px;">
+                <div class="sidebar-block px-3 px-lg-0 me-lg-4">
+                    <a class="d-lg-none block-toggler" data-bs-toggle="collapse" href="#brandFilterMenu" aria-expanded="true" aria-controls="brandFilterMenu">Filter by brand</a>
+                    <div class="expand-lg collapse show" id="CateFilterMenu">
+                        <h6 class="sidebar-heading d-none d-lg-block"><b>Categoría </b></h6>
+                        <form class="mt-4 mt-lg-0" action="#">
+                            <div class="mb-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" id="Cate0" type="checkbox" name="clothes-brand" checked="">
+                                    <label class="form-check-label" for="Cate0">Todos <small>(24)</small></label>
+                                </div>
+                            </div>
+                            <div class="mb-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" id="Cate1" type="checkbox" name="clothes-brand">
+                                    <label class="form-check-label" for="Cate1">Niños <small>(6)</small></label>
+                                </div>
+                            </div>
+                            <div class="mb-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" id="Cate2" type="checkbox" name="clothes-brand">
+                                    <label class="form-check-label" for="Cate2">Adulto <small>(13)</small></label>
+                                </div>
+                            </div>
+                            <div class="mb-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" id="Cate3" type="checkbox" name="clothes-brand">
+                                    <label class="form-check-label" for="Cate3">Adulto Mayor <small>(5)</small></label>
+                                </div>
+                            </div>
+                            <div class="mb-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" id="Cate4" type="checkbox" name="clothes-brand">
+                                    <label class="form-check-label" for="Cate4">Hidroquinesia <small>(5)</small></label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="sidebar-block px-5 px-lg-0 me-lg-4" style="margin-left:10px;">
+                <a class="d-lg-none block-toggler" data-bs-toggle="collapse" href="#sizeFilterMenu" aria-expanded="false" aria-controls="sizeFilterMenu">Filter by size</a>
+                <div class="expand-lg collapse show" id="sizeFilterMenu">
+                    <h6 class="sidebar-heading d-none d-lg-block"><b>Día de la Semana</b></h6>
+                    <form class="mt-4 mt-lg-0" action="#">
+                        <div class="mb-1">
+                            <div class="form-check">
+                                <input class="form-check-input" id="Dia0" type="checkbox" name="clothes-brand" checked="">
+                                <label class="form-check-label" for="brand0">Todos</label>
+                            </div>
+                        </div>
+                        <div class="mb-1">
+                            <div class="form-check">
+                                <input class="form-check-input" id="Dia1" type="checkbox" name="clothes-brand">
+                                <label class="form-check-label" for="Dia1">Lunes</label>
+                            </div>
+                        </div>
+                        <div class="mb-1">
+                            <div class="form-check">
+                                <input class="form-check-input" id="Dia2" type="checkbox" name="clothes-brand">
+                                <label class="form-check-label" for="Dia2">Martes</label>
+                            </div>
+                        </div>
+                        <div class="mb-1">
+                            <div class="form-check">
+                                <input class="form-check-input" id="Dia3" type="checkbox" name="clothes-brand">
+                                <label class="form-check-label" for="Dia3">Miércoles</label>
+                            </div>
+                        </div>
+                        <div class="mb-1">
+                            <div class="form-check">
+                                <input class="form-check-input" id="Dia4" type="checkbox" name="clothes-brand">
+                                <label class="form-check-label" for="Dia4">Jueves</label>
+                            </div>
+                        </div>
+                        <div class="mb-1">
+                            <div class="form-check">
+                                <input class="form-check-input" id="Dia5" type="checkbox" name="clothes-brand">
+                                <label class="form-check-label" for="Dia5">Viernes</label>
+                            </div>
+                        </div>
+                        <div class="mb-1">
+                            <div class="form-check">
+                                <input class="form-check-input" id="Dia6" type="checkbox" name="clothes-brand">
+                                <label class="form-check-label" for="Dia6">Sábado</label>
+                            </div>
+                        </div>
+                        <div class="mb-1">
+                            <div class="form-check">
+                                <input class="form-check-input" id="Dia7" type="checkbox" name="clothes-brand">
+                                <label class="form-check-label" for="Dia7">Domingo</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>  <!--Final Sidebar de filtro-->     
+
+        <div class="row col-8"> <!--Inicio cuadro de cursos-->
+            @foreach (var servicio in Model)
+            {
+                <div class="col-3">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">
+                                <label style="font-size:23px;color:steelblue">@servicio.Categoria</label>
+                            </h4>
+                        </div>
+                        <div class="card-body" style="font-family: 'Open Sans', Arial, sans-serif; text-shadow: 0 0 1px #fff, 0 1px 2px rgba(0,0,0,0.3);">
+                            <p>@servicio.Des_Servicio</p>
+                            <label style="font-size:14px;"><b>Día: </b>@servicio.Dia</label>
+                            <br />
+                            <label style="font-size:14px; color:#a51313"><b>Tarifa: @String.Format(new CultureInfo("es-CR"), "{0:C}", @servicio.Tarifa)</b></label>
+                        </div>
+                        <div class="card-header">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a asp-action="Carrito" asp-controller="FE-Instalaciones" asp-route-id="@servicio.IdServicio" class="btn btn-outline-success pull-right btn-outline-info">Agregar al carrito</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>  <!-- Final cuadro de cursos-->
+    </div>
+</div>

@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] CCDRSJ</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
+    <link href="~/css/bootstrap-datepicker.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+</head>
+<body id="bodysystem" style="background: #f8f9fd">
+    <header id="page-topbar">
+        <div class="navbar-header">
+            <div class="d-flex">
+                <div class="navbar-brand-box">
+                    <a class="logo logo-dark" asp-area="" asp-controller="Home" asp-action="Index">
+                        <span class="logo-lg">
+                            <img src="~/img/logosj.png" alt="" height="40">
+                        </span>
+                    </a>
+                    <a><span style="color:aliceblue; "> Comité Cantonal de Deportes  Recreación de San José</span></a>
+                </div>
+            </div>
+
+            <div class="d-flex">
+
+            </div>
+        </div>
+    </header>
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - CCDRSJ - <a asp-area="" asp-controller="Home" asp-action="Privacy">Acerca de</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
+    <script src="https://kit.fontawesome.com/be29341b50.js" crossorigin="anonymous"></script>
+    <script fontawesome src="~/js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="~/js/bootstrap-datepicker.js"></script>
+    <script src="~/js/bootstrap-datepicker.es.min.js"></script>
+    <script src="js/popper.js"></script>    @*pagina login*@
+    <script src="js/main.js"></script>       @*pagina login*@
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
