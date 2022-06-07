@@ -33,8 +33,8 @@ namespace planventas
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                  .AddCookie(options =>
                  {
-                     options.LoginPath = "/home/Sistema";
-                     options.LogoutPath = "/home/Sistema";
+                     options.LoginPath = "/home/Index";
+                     options.LogoutPath = "/home/Index";
                      options.ExpireTimeSpan = TimeSpan.FromMinutes(15);
                      options.SlidingExpiration = true;
                      options.AccessDeniedPath = "/denied";

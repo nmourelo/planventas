@@ -60,7 +60,7 @@
 
             <div class="thumbex">
                 <div class="title">
-                    <div class="thumbnail"><a asp-area="" asp-route-id="@item.Cod_Instalacion" asp-controller="FE_Instalaciones" asp-action="Productos"> <img src="@Url.Content(number)" alt=@alt1 /><span>@Html.DisplayFor(modelItem => item.Des_Instalacion)</span></a></div>
+                    <div class="thumbnail"><a asp-area="" asp-route-id="@item.Cod_Instalacion" asp-controller="FE_Instalaciones" asp-action="ListProductos"> <img src="@Url.Content(number)" alt=@alt1 /><span>@Html.DisplayFor(modelItem => item.Des_Instalacion)</span></a></div>
                 </div>
                 <figcaption>
                     <p>@Html.DisplayFor(modelItem => item.Des_Direccion)</p>

@@ -22,6 +22,10 @@ namespace planventas.Data
         public string Dia { get; set; }
         [Required]
         [Column(TypeName = "varchar")]
+        [StringLength(50)]
+        public string Horario { get; set; }
+        [Required]
+        [Column(TypeName = "varchar")]
         [StringLength(25)]
         public string Categoria { get; set; }
         [Display(Name ="Servicio")]

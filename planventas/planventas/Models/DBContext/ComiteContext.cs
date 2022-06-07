@@ -24,6 +24,7 @@ namespace planventas.Models.DBContext
         public virtual DbSet<Pos_Entrenador> Pos_Entrenadores { get; set; }
         public virtual DbSet<Pos_Servicio> Pos_Servicios { get; set; }
         public virtual DbSet<RmUser> Rm_Usuarios { get; set; }
+        public virtual DbSet<TemporalSale> TemporalSales { get; set; }
 
 
 
@@ -34,6 +35,7 @@ namespace planventas.Models.DBContext
 
 
             modelBuilder.Entity<RmUser>().ToTable("Rm_Usuarios");
+            modelBuilder.Entity<TemporalSale>().ToTable("Temporal_Sales");
 
         }
 

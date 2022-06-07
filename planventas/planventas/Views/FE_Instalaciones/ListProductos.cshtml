@@ -1,5 +1,31 @@
 ﻿@using System.Globalization;
-@model IEnumerable<planventas.Data.Pos_Servicio> 
+@model planventas.ViewModels.HomeViewModel
+
+@{
+    ViewData["Title"] = "Servicios";
+}
+
+<style type="text/css">
+    .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border: 1px solid lightgray;
+        box-shadow: 2px 2px 8px 4px #d3d3d3d1;
+        border-radius: 15px;
+        font-family: sans-serif;
+        margin: 5px;
+    }
+body{
+    background-image:none;
+}
+    body::after {
+        background:none;
+    }
+
+
+</style>
+
 
 
 <div class="container-fluid" style="margin-top:75px;">
@@ -7,12 +33,12 @@
         <div class="col-2" style="margin-left: 10px;">
             <br />
             <br />
-            <h3>Filtrar y  buscar por:</h3>
+            <h4>Filtrar y  buscar por:</h4>
         </div>
         <div class="col-9" style="display:inline-flex">
-            <div class="col-9" >
-                <h2>@ViewData["Insta"]</h2>
-                <h3>Cursos y Horarios</h3>
+            <div class="col-9">
+                <h3>@ViewData["Insta"]</h3>
+                <h5>Cursos y Horarios</h5>
             </div>
             <div class="col-3" style="align-items:center;">
                 <a href="javascript:history.back()"> <img src="~/img/back2.png" height="70" width="70" alt="regresar" />Regresar</a>
@@ -20,8 +46,10 @@
         </div>
 
     </div>
+
     <div class="row col-12">
-        <div class="col-2" style="margin-left: 10px;"> <!--Inicio Sidebar de filtro-->
+        <div class="col-2" style="margin-left: 10px;">
+            <!--Inicio Sidebar de filtro-->
             <div class="sidebar-block px-5 px-lg-0 me-lg-4" style="margin-left:10px;">
                 <div class="sidebar-block px-3 px-lg-0 me-lg-4">
                     <a class="d-lg-none block-toggler" data-bs-toggle="collapse" href="#brandFilterMenu" aria-expanded="true" aria-controls="brandFilterMenu">Filter by brand</a>
@@ -119,32 +147,51 @@
                     </form>
                 </div>
             </div>
-        </div>  <!--Final Sidebar de filtro-->     
+        </div>  <!--Final Sidebar de filtro-->
 
-        <div class="row col-8"> <!--Inicio cuadro de cursos-->
-            @foreach (var servicio in Model)
-            {
-                <div class="col-3">
-                    <div class="card mb-3">
-                        <div class="card-header">
-                            <h4 class="my-0 font-weight-normal">
-                                <label style="font-size:23px;color:steelblue">@servicio.Categoria</label>
-                            </h4>
-                        </div>
-                        <div class="card-body" style="font-family: 'Open Sans', Arial, sans-serif; text-shadow: 0 0 1px #fff, 0 1px 2px rgba(0,0,0,0.3);">
-                            <p>@servicio.Des_Servicio</p>
-                            <label style="font-size:14px;"><b>Día: </b>@servicio.Dia</label>
-                            <br />
-                            <label style="font-size:14px; color:#a51313"><b>Tarifa: @String.Format(new CultureInfo("es-CR"), "{0:C}", @servicio.Tarifa)</b></label>
-                        </div>
-                        <div class="card-header">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a asp-action="Carrito" asp-controller="FE-Instalaciones" asp-route-id="@servicio.IdServicio" class="btn btn-outline-success pull-right btn-outline-info">Agregar al carrito</a>
+        <div class="row col-8">
+
+            <div class="col-md-3 align-self-end">
+                @if (Model.Quantity > 0)
+                {
+                    <a asp-action="ShowCart" class="btn btn-outline-primary"><i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;Ver Carro de Compras (@Model.Quantity)</a>
+                }
+            </div>
+
+            <div class="row row-cols-1 row-cols-md-4 g-3 mt-1">
+                @if (Model.Products.Count() > 0)
+                {
+                    @foreach (var item in Model.Products)
+                    {
+                        <div class="col">
+                            <div class="card h-100">
+                                <div class="card-header">
+                                    <h6 class="card-title text-navy">@item.Des_Servicio</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="text-center zoom">
+                                        <img src="~/img/natacion1.jpg" style="height:120px; max-width:180px;" class="text-center" alt=@item.Cod_Instalacion />
+                                    </div>
+                                    <p class="card-text smfnt">@item.Dia &nbsp;-&nbsp; @item.Horario</p>
+                                    <h5 class="text-muted">Tarifa :&nbsp;@String.Format(new CultureInfo("es-CR"), "{0:C}", item.Tarifa)</h5>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <a asp-action="Details" asp-route-id="@item.IdServicio" class="btn btn-sm btn-secondary">Detalles</a>
+                                    <a asp-action="Add" asp-route-id="@item.IdServicio" class="btn btn-sm btn-primary">Agregar al Carro</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    }
+                }
+                else
+                {
+                    <h3>No hay productos con su criterio de búsqueda</h3>
+                }
+            </div>
+
+            @section Scripts {
+                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
             }
-        </div>  <!-- Final cuadro de cursos-->
+
+        </div>
     </div>
-</div>
