@@ -21,7 +21,12 @@ namespace planventas.Data
 
         [DataType(DataType.MultilineText)]
         [Display(Name = "Comentarios")]
-        public string? Remarks { get; set; }
+        public string Remarks { get; set; }
+        //no modifica la BD el => es la asignacion de que compone el campo
+        [DisplayFormat(DataFormatString = "{0:C2}")]
+        [Display(Name = "Valor")]
+        public decimal Value => Product == null ? 0 : (decimal)Quantity * Product.Tarifa;
+
 
     }
 }
