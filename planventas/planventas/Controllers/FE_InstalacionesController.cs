@@ -137,7 +137,7 @@ namespace planventas.Controllers
         }
 //Codigo Util Lo comentamos porque ahorita no hay   autorizaciones
  //       [Authorize]
-        public async Task<IActionResult> ShowCart()
+        public async Task<IActionResult> ShowCart(int insta)
         {
             //User user = await _userHelper.GetUserAsync(User.Identity.Name);
             //if (user == null)
@@ -151,20 +151,22 @@ namespace planventas.Controllers
                 .Where(ts => ts.Identificacion ==MyId)
                 .ToListAsync();
 
+            if (temporalSales == null || temporalSales.Count == 0)
+            {
+                return RedirectToAction("ListProductos", new { id = insta });
+            }
 
-                ShowCartViewModel model = new()
-                {
- 
-
+            ShowCartViewModel model = new()
+            {
                 Cod_Instalacion = temporalSales.FirstOrDefault(x => x.Identificacion == MyId).Product.Cod_Instalacion,
-                    Identificacion = MyId,
-                    TemporalSales = temporalSales,
-        };
+                Identificacion = MyId,
+                TemporalSales = temporalSales,
+            };
             return View(model);
         }
 
 
-        public async Task<IActionResult> DecreaseQuantity(int? id)
+        public async Task<IActionResult> DecreaseQuantity(int? id, int insta)
         {
             if (id == null)
             {
@@ -181,10 +183,10 @@ namespace planventas.Controllers
                 _context.TemporalSales.Update(temporalSale);
                 await _context.SaveChangesAsync();
             }
-            return RedirectToAction(nameof(ShowCart));
+            return RedirectToAction("ShowCart", new { insta });
         }
 
-        public async Task<IActionResult> IncreaseQuantity(int? id)
+        public async Task<IActionResult> IncreaseQuantity(int? id, int insta)
         {
             if (id == null)
             {
@@ -196,15 +198,14 @@ namespace planventas.Controllers
             {
                 return NotFound();
             }
-
             temporalSale.Quantity++;
             _context.TemporalSales.Update(temporalSale);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction(nameof(ShowCart));
+            return RedirectToAction("ShowCart", new { insta });
         }
 
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id, int insta)
         {
             if (id == null)
             {
@@ -216,10 +217,9 @@ namespace planventas.Controllers
             {
                 return NotFound();
             }
-
             _context.TemporalSales.Remove(temporalSale);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(ShowCart));
+            return RedirectToAction("ShowCart", new { insta });
         }
 
         public async Task<IActionResult> Edit(int? id)
@@ -253,14 +253,16 @@ namespace planventas.Controllers
             {
                 return NotFound();
             }
-
             if (ModelState.IsValid)
             {
+                string insta;
                 try
                 {
                     TemporalSale temporalSale = await _context.TemporalSales.FindAsync(id);
                     temporalSale.Quantity = model.Quantity;
                     temporalSale.Remarks = model.Remarks;
+                    insta = temporalSale.Product.Cod_Instalacion.ToString();
+
                     _context.Update(temporalSale);
                     await _context.SaveChangesAsync();
                 }
@@ -269,8 +271,7 @@ namespace planventas.Controllers
                     ModelState.AddModelError(string.Empty, exception.Message);
                     return View(model);
                 }
-
-                return RedirectToAction(nameof(ShowCart));
+                return RedirectToAction("ShowCart", new { insta });
             }
 
             return View(model);

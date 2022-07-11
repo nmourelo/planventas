@@ -641,12 +641,12 @@ span {
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-    padding: 0 30px;
+    padding: 0 10px;
 }
 
     .piscina .thumbex {
         font-family: 'Raleway', Arial, sans-serif;
-        margin: 10px 20px 30px;
+        margin: 2px 55px 20px -5px;
         width: 100%;
         min-width: 250px;
         max-width: 435px;
@@ -688,22 +688,25 @@ span {
                 top: calc(150px - 20px);
                 left: 0;
                 right: 0;
-                background: rgba(0, 0, 0, 0.7);
-                padding: 10px 50px;
+                background: rgba(0, 0, 0, 0.5);
+                padding: 10px 10px;
                 margin: 0 45px;
                 text-align: center;
-                font-size: 24px;
+                font-size: 22px;
                 color: white;
                 font-weight: 300;
-                font-family: "Raleway", sans-serif;
+                font-family: 'Familjen Grotesk', sans-serif;
+                border-radius: 30px;
+                /*font-family: "Raleway", sans-serif;*/
                 letter-spacing: 0.2px;
                 transition: all 0.3s ease-out;
+                opacity: 30;
             }
 
             .piscina .thumbex .thumbnail:hover {
                 backface-visibility: hidden;
                 transform: scale(1.15, 1.15);
-                opacity: 1;
+                opacity: 10;
             }
 
                 .piscina .thumbex .thumbnail:hover span {

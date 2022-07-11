@@ -97,20 +97,20 @@
                                     @String.Format(new CultureInfo("es-CR"), "{0:C}", item.Product.Tarifa)
                                 </td>
                                 <td>
-                                    <a asp-action="DecreaseQuantity" asp-route-id="@item.Id" class="btn btn-secondary">-</a>
+                                    <a asp-action="DecreaseQuantity" asp-route-id="@item.Id" asp-route-insta="@item.Product.Cod_Instalacion" class="btn btn-secondary">-</a>
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Quantity)
                                 </td>
                                 <td>
-                                    <a asp-action="IncreaseQuantity" asp-route-id="@item.Id" class="btn btn-primary">+</a>
+                                    <a asp-action="IncreaseQuantity" asp-route-id="@item.Id" asp-route-insta="@item.Product.Cod_Instalacion" class="btn btn-primary">+</a>
                                 </td>
                                 <td>
                                     @String.Format(new CultureInfo("es-CR"), "{0:C}", item.Value)
                                 </td>
                                 <td>
                                     <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Editar</a>
-                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Borrar</a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id" asp-route-insta="@item.Product.Cod_Instalacion" class="btn btn-danger">Borrar</a>
                                 </td>
                             </tr>
                             }

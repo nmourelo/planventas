@@ -1,0 +1,114 @@
+﻿@model planventas.ViewModels.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div id="uno" class="container">
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="row">
+
+        <div class="col-md-4 offset-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Inicio de Sesión</h3>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Login">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-envelope"></i></span>
+                                <input asp-for="Username" id="txtUser" class="form-control" placeholder="Email" style="font-size:14px;" />
+                            </div>
+                            <span asp-validation-for="Username" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
+                                <input asp-for="Password" type="password" class="form-control" id="password" placeholder="Contraseña" required aria-label="password" aria-describedby="basic-addon1" />
+                                <div class="input-group-append">
+                                    <span class="input-group-text" onclick="password_show_hide();">
+                                        <i class="fas fa-eye" id="show_eye"></i>
+                                        <i class="fas fa-eye-slash d-none" id="hide_eye"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="input-group">
+                            <div class="col-md-4">
+                                <button class="btn btn-primary btn-block login-button" title="Presione para ingresar al carrito de compras" type="submit"><i class="fa-solid fa-right-to-bracket"></i> Entrar</button>
+                            </div>
+                            <div class="col-md-8" style="padding:0px;">
+                                <a asp-action="Register" title="Presione para registrarse en el sitio" class="btn btn-secondary btn-block"><i class="fa-solid fa-square-plus"></i> Registrarse Como Usuario</a>
+                            </div>
+                        </div>
+                            <br />
+                            <div class="input-group">
+                                <div class="form-check">
+                                    <input asp-for="RememberMe" type="checkbox" class="form-check-input" />
+                                    <label asp-for="RememberMe" class="form-check-label"></label>
+                                </div>
+                                <span asp-validation-for="RememberMe" class="text-warning"></span>
+
+                                @*<div class="checkbox login-options" style="margin-top:5px;">
+                <label><input type="checkbox" /> Recordar</label>
+                <a href="#" class="login-forgot">Olvidó la Contraseña?</a>
+            </div>*@
+                            </div>
+</form>
+                </div>
+            </div>
+            @*<form asp-action="Login">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Username" class="control-label"></label>
+                        <input asp-for="Username" class="form-control" />
+                        <span asp-validation-for="Username" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" type="password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mt-2">
+                        <div class="form-check">
+                            <input asp-for="RememberMe" type="checkbox" class="form-check-input" />
+                            <label asp-for="RememberMe" class="form-check-label"></label>
+                        </div>
+                        <span asp-validation-for="RememberMe" class="text-warning"></span>
+                    </div>
+                    <div class="form-group mt-2">
+                        <input type="submit" value="Iniciar Sesión" class="btn btn-outline-primary" />
+                        <a asp-action="Register" class="btn btn-outline-secondary">Registrar Nuevo Usuario</a>
+                    </div>
+                </form>*@
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script type="text/javascript">
+
+        function password_show_hide() {
+            var x = document.getElementById("password");
+            var show_eye = document.getElementById("show_eye");
+            var hide_eye = document.getElementById("hide_eye");
+            hide_eye.classList.remove("d-none");
+            if (x.type === "password") {
+                x.type = "text";
+                show_eye.style.display = "none";
+                hide_eye.style.display = "block";
+            } else {
+                x.type = "password";
+                show_eye.style.display = "block";
+                hide_eye.style.display = "none";
+            }
+        }
+    </script>
+}

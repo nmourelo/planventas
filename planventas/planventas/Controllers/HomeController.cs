@@ -73,6 +73,11 @@ namespace planventas.Controllers
         }
 
 
+        [Route("error/404")]
+        public IActionResult Error404()
+        {
+            return View();
+        }
 
 
         public IActionResult Privacy()

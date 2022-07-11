@@ -1,6 +1,57 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<style>
+    aside {
+        width: 18%;
+        padding-left: 1px;
+        margin-left: 1px;
+        float: left;
+        font-style: normal;
+        background-color: transparent;
+    }
+
+    .list-group-item {
+        background-color: transparent;
+        border-top: 1px solid #ddd;
+        border-radius: 4px;
+        color: darkslategrey;
+    }
+
+    .login-form {
+        width: 300px;
+        font-family: 'Familjen Grotesk', sans-serif;
+        font-size: 12px;
+        background: none;
+        border: outset;
+        border-width: thin;
+        border-color: ghostwhite;
+        /*        margin-top:5px;
+*/
+    }
+
+    .login-title {
+        font-family: 'Exo', sans-serif;
+        text-align: left;
+        color: black;
+    }
+
+    .login-userinput {
+        margin-bottom: 10px;
+    }
+
+    .login-button {
+        margin-top: 10px;
+    }
+
+    .login-options {
+        margin-bottom: 0px;
+    }
+
+    .login-forgot {
+        float: right;
+    }
+</style>
 <!-- Header-->
 <header class="py-5" style="margin-top:-10px;" onload="displayBusyIndicator()">
     <div class="container px-sm-5">
@@ -17,83 +68,140 @@
 </header>
 <!-- Page Content-->
 <section class="pt-0" style="margin-top:-65px;">
+    <aside>
+        <div class="container login-form">
+            <h4 class="login-title">Ingresar</h4>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">regístrese o inicie sesión para matricular o alquilar las instalaciones </a>
+                    <!--<form>
+        <div class="input-group login-userinput">
+            <span class="input-group-text" id="addon-wrapping"><i class="fa fa-user bigicon"></i></span>
+            <input id="txtUser" type="text" class="form-control" name="username" placeholder="Usuario" style="font-size:14px;">
+        </div>-->
+                    @*<div class="input-group">
+            <span class="input-group-text" id="addon-wrapping"><i class="fa fa-lock bigicon"></i></span>
+            <input id="txtPassword" type="password" class="form-control" name="password" placeholder="Contraseña">
+            <span id="showPassword" class="input-group-btn">
+                <button class="btn btn-default reveal" type="button"><i class="far fa-eye bigicon"></i></button>
+            </span>
+        </div>*@
+
+                    <!--<div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
+            </div>
+            <input name="password" type="password" value="" class="input form-control" id="password" placeholder="password" required aria-label="password" aria-describedby="basic-addon1" />
+            <div class="input-group-append">
+                <span class="input-group-text" onclick="password_show_hide();">
+                    <i class="fas fa-eye" id="show_eye"></i>
+                    <i class="fas fa-eye-slash d-none" id="hide_eye"></i>
+                </span>
+            </div>
+        </div>
+        <button class="btn btn-primary btn-block login-button" type="submit"><i class="fa fa-sign-in"></i> Ingresar</button>
+        <div class="checkbox login-options" style="margin-top:5px;">
+            <label><input type="checkbox" /> Recordar</label>
+            <a href="#" class="login-forgot">Olvidó la Contraseña?</a>
+        </div>
+    </form>-->
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-left:20px;margin-top:35px;width:300px;">
+            <div class="card-header">
+                <h3>Servicios</h3>
+            </div>
+            <div class="card-body">
+                <div class="list-group bg-transparent list-group-flush">
+                    <a asp-area="" asp-route-id="1" asp-controller="FE_Instalaciones" asp-action="Index">Centros Acuáticos</a>
+                    <a asp-area="" asp-route-id="2" asp-controller="FE_Instalaciones" asp-action="Index">Canchas de Fútbol</a>
+                    <a asp-area="" asp-route-id="3" asp-controller="FE_Instalaciones" asp-action="Index">Gimnasios</a>
+                    <a asp-area="" asp-route-id="4" asp-controller="FE_Instalaciones" asp-action="Index">Pistas Atléticas</a>
+                    <a asp-area="" asp-route-id="5" asp-controller="FE_Instalaciones" asp-action="Index">Actividades Varias</a>
+                </div>
+            </div>
+        </div>
+    </aside>
     <div class="container px-sm-1">
         <ul class="ch-grid">
             <li>
                 <div class="ch-item ch-img-1">
-                    <div class="ch-info-wrap">
-                        <div class="ch-info">
-                            <div class="ch-info-front ch-img-1"></div>
-                            <a asp-area="" asp-route-id="1" asp-controller="FE_Instalaciones" asp-action="Index">
+                    <a asp-area="" asp-route-id="1" asp-controller="FE_Instalaciones" asp-action="Index">
+                        <div class="ch-info-wrap">
+                            <div class="ch-info">
+                                <div class="ch-info-front ch-img-1"></div>
                                 <div class="ch-info-back">
                                     <h2>Natación</h2>
-                                    @*<p>Cursos y Horarios <a asp-area="" asp-route-id="1" asp-controller="FE_Instalaciones" asp-action="Index">instalaciones</a></p>*@
-                                    <a asp-area="" asp-route-id="1" asp-controller="FE_Instalaciones" asp-action="Index"><p>Cursos y Horarios</p>instalaciones</a>
+                                    <p>Instalaciones, Cursos y Horarios</p>
                                 </div>
-                            </a>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </li>
             <li>
                 <div class="ch-item ch-img-2">
-                    <div class="ch-info-wrap">
-                        <div class="ch-info">
-                            <div class="ch-info-front ch-img-2"></div>
-                            <div class="ch-info-back">
-                                <h2>Canchas de Fútbol</h2>
-                                <p>Cursos y Horarios <a asp-area="" asp-route-id="2" asp-controller="FE_Instalaciones" asp-action="Index">instalaciones</a></p>
+                    <a asp-area="" asp-route-id="2" asp-controller="FE_Instalaciones" asp-action="Index">
+                        <div class="ch-info-wrap">
+                            <div class="ch-info">
+                                <div class="ch-info-front ch-img-2"></div>
+                                <div class="ch-info-back">
+                                    <h2 style="margin-top:40px;">Canchas de Fútbol</h2>
+                                    <p>Instalaciones y Horarios</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </li>
             <li>
                 <div class="ch-item ch-img-3">
-                    <div class="ch-info-wrap">
-                        <div class="ch-info">
-                            <div class="ch-info-front ch-img-3"></div>
-                            <a asp-area="" asp-route-id="3" asp-controller="FE_Instalaciones" asp-action="Index">
+                    <a asp-area="" asp-route-id="3" asp-controller="FE_Instalaciones" asp-action="Index">
+                        <div class="ch-info-wrap">
+                            <div class="ch-info">
+                                <div class="ch-info-front ch-img-3"></div>
                                 <div class="ch-info-back">
                                     <h2>Gimnasios</h2>
-                                    <p>Horarios <a href="#">instalaciones</a></p>
+                                    <p>Instalaciones y Horarios</p>
                                 </div>
-                            </a>
 
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </li>
         </ul>
         <ul class="ch-grid">
             <li>
                 <div class="ch-item ch-img-4">
-                    <div class="ch-info-wrap">
-                        <div class="ch-info">
-                            <div class="ch-info-front ch-img-4"></div>
-                            <a asp-area="" asp-route-id="4" asp-controller="FE_Instalaciones" asp-action="Index">
+                    <a asp-area="" asp-route-id="4" asp-controller="FE_Instalaciones" asp-action="Index">
+                        <div class="ch-info-wrap">
+                            <div class="ch-info">
+                                <div class="ch-info-front ch-img-4"></div>
                                 <div class="ch-info-back">
                                     <h2>Pista Atlética</h2>
-                                    <p>Horarios <a href="#">instalaciones</a></p>
+                                    <p>Instalaciones y Horarios</p>
                                 </div>
-                            </a>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </li>
             <li>
                 <div class="ch-item ch-img-5">
-                    <div class="ch-info-wrap">
-                        <div class="ch-info">
-                            <div class="ch-info-front ch-img-5"></div>
-                            <a asp-area="" asp-route-id="5" asp-controller="FE_Instalaciones" asp-action="Index">
+                    <a asp-area="" asp-route-id="5" asp-controller="FE_Instalaciones" asp-action="Index">
+                        <div class="ch-info-wrap">
+                            <div class="ch-info">
+                                <div class="ch-info-front ch-img-5"></div>
                                 <div class="ch-info-back">
-                                    <h2>Actividades Variadas</h2>
-                                    <p>Lugar y Horarios<a href="#">instalaciones</a></p>
+                                    <h2 style="margin-top:40px;">Actividades Variadas</h2>
+                                    <p>Lugar y Horarios</p>
                                 </div>
-                            </a>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </li>
         </ul>
@@ -114,6 +222,46 @@
         $(document).on('submit', 'form', function () {
             displayBusyIndicator();
         });
+
+      //window.onload = function () { $("#showPassword").hide(); }
+
+      //  $("#txtPassword").on('change', function () {
+      //      if ($("#txtPassword").val()) {
+      //          $("#showPassword").show();
+      //      }
+      //      else {
+      //          $("#showPassword").hide();
+      //      }
+      //  });
+
+      //  $(".reveal").on('click', function () {
+      //      var $pwd = $("#txtPassword");
+      //      if ($pwd.attr('type') === 'password') {
+      //          $pwd.attr('type', 'text');
+      //      }
+      //      else {
+      //          $pwd.attr('type', 'password');
+      //      }
+      //  });
+
+
+            function password_show_hide() {
+                var x = document.getElementById("password");
+                var show_eye = document.getElementById("show_eye");
+                var hide_eye = document.getElementById("hide_eye");
+                hide_eye.classList.remove("d-none");
+                if (x.type === "password") {
+                    x.type = "text";
+                    show_eye.style.display = "none";
+                    hide_eye.style.display = "block";
+                } else {
+                    x.type = "password";
+                    show_eye.style.display = "block";
+                    hide_eye.style.display = "none";
+                }
+            }
+
+
 
     </script>
 
