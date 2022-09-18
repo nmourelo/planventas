@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,8 @@ using planventas.Models.DBContext;
 
 namespace planventas.Controllers
 {
+//TODO se puede colocar aqui para la totalidad del controller/  entonces se quita de cada uno de los métodos
+//    [Authorize(Roles = "Admin")]
     public class Pos_EntrenadoresController : Controller
     {
         private readonly Context _context;
@@ -45,6 +48,7 @@ namespace planventas.Controllers
             return View(pos_Entrenador);
         }
 
+        [Authorize(Roles="Admin")]
         // GET: Pos_Entrenadores/Create
         public IActionResult Create()
         {
@@ -52,9 +56,7 @@ namespace planventas.Controllers
             return View();
         }
 
-        // POST: Pos_Entrenadores/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Cod_Entrenador,Cod_Instalacion,Nom_Entrenador,Des_Perfil,Dir_Imagen,Estado,Fecha_Registro,Usuario_Registro,Fecha_Borra,Usuario_Borra,Motivo_Borra")] Pos_Entrenador pos_Entrenador)
@@ -88,6 +90,7 @@ namespace planventas.Controllers
             return View(pos_Entrenador);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Pos_Entrenadores/Edit/5
         public async Task<IActionResult> Edit(long? id)
         {
@@ -105,9 +108,8 @@ namespace planventas.Controllers
             return View(pos_Entrenador);
         }
 
+        [Authorize(Roles = "Admin")]
         // POST: Pos_Entrenadores/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(long id, [Bind("Cod_Entrenador,Cod_Instalacion,Nom_Entrenador,Des_Perfil,Dir_Imagen,Estado,Fecha_Registro,Usuario_Registro,Fecha_Borra,Usuario_Borra,Motivo_Borra")] Pos_Entrenador pos_Entrenador)
@@ -144,6 +146,7 @@ namespace planventas.Controllers
             return View(pos_Entrenador);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: RhPuestos/Delete/5
         public async Task<IActionResult> Delete(long? id)
         {
@@ -164,7 +167,6 @@ namespace planventas.Controllers
             return RedirectToAction(nameof(Index));
 
         }
-
 
         private bool Pos_EntrenadorExists(long id)
         {
